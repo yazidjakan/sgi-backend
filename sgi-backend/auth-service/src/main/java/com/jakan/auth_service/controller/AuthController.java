@@ -11,10 +11,14 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/auth")
-@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class AuthController {
     private final AuthenticationService authenticationService;
+    
+    @GetMapping
+    public ResponseEntity<String> healthCheck() {
+        return ResponseEntity.ok("Auth Service is running");
+    }
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request){
         System.out.println("Received authentication request for username: " + request.getUsername());

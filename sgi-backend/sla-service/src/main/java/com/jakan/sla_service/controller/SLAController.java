@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/slas")
+@RequestMapping("/api/v1/slas")
 @RequiredArgsConstructor
 public class SLAController {
     private final SLAService slaService;

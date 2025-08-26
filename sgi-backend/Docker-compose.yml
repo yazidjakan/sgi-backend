@@ -66,6 +66,12 @@ services:
       - '8075:8075'
     expose:
       - '8075'
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://auth-dock:8075/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
     environment:
       - DISCOVERY_SERVICE_URL=http://discovery-dock:8762/eureka
       - CONFIG_SERVICE_URL=http://config-dock:8888
@@ -84,6 +90,12 @@ services:
       - '8076:8076'
     expose:
       - '8076'
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://user-dock:8076/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
     environment:
       - DISCOVERY_SERVICE_URL=http://discovery-dock:8762/eureka
       - CONFIG_SERVICE_URL=http://config-dock:8888
@@ -102,6 +114,12 @@ services:
       - '8077:8077'
     expose:
       - '8077'
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://incident-dock:8077/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
     environment:
       - DISCOVERY_SERVICE_URL=http://discovery-dock:8762/eureka
       - CONFIG_SERVICE_URL=http://config-dock:8888
@@ -120,6 +138,12 @@ services:
       - '8079:8079'
     expose:
       - '8079'
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://sla-dock:8079/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
     environment:
       - DISCOVERY_SERVICE_URL=http://discovery-dock:8762/eureka
       - CONFIG_SERVICE_URL=http://config-dock:8888
@@ -138,6 +162,12 @@ services:
       - '8080:8080'
     expose:
       - '8080'
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://notification-dock:8080/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
     environment:
       - DISCOVERY_SERVICE_URL=http://discovery-dock:8762/eureka
       - CONFIG_SERVICE_URL=http://config-dock:8888
@@ -156,6 +186,12 @@ services:
       - '8081:8081'
     expose:
       - '8081'
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://report-dock:8081/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
     environment:
       - DISCOVERY_SERVICE_URL=http://discovery-dock:8762/eureka
       - CONFIG_SERVICE_URL=http://config-dock:8888

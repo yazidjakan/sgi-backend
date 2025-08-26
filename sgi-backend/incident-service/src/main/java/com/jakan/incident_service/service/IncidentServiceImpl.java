@@ -54,6 +54,10 @@ public class IncidentServiceImpl {
         return incidentRepository.findById(id);
     }
 
+    public List<Incident> getAllIncidents() {
+        return incidentRepository.findAll();
+    }
+
     public Incident updateIncident(Long id, Incident incidentDetails) {
         Incident incident = incidentRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Incident non trouvé"));

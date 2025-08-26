@@ -40,6 +40,17 @@ sleep 30
 echo "📊 État des services:"
 docker-compose ps
 
+# Attendre que tous les services soient prêts
+echo "⏳ Attente que tous les services soient healthy..."
+sleep 60
+
+# Vérifier les services dans Eureka
+echo "🔍 Vérification des services dans Eureka..."
+if [ -f "./check-services.sh" ]; then
+    chmod +x ./check-services.sh
+    ./check-services.sh
+fi
+
 echo ""
 echo "✅ Application démarrée avec succès!"
 echo ""
@@ -51,3 +62,5 @@ echo "🗄️  MySQL: localhost:3306"
 echo ""
 echo "📝 Logs: docker-compose logs -f [service-name]"
 echo "🛑 Arrêt: docker-compose down"
+echo ""
+echo "🔍 Pour vérifier les services: ./check-services.sh"

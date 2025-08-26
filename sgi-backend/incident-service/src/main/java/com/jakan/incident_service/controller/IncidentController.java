@@ -78,7 +78,13 @@ public class IncidentController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/api/incidents/resolved-for-ai")
+    @GetMapping("/all")
+    public ResponseEntity<List<Incident>> getAllIncidents() {
+        List<Incident> incidents = incidentService.getAllIncidents();
+        return ResponseEntity.ok(incidents);
+    }
+
+    @GetMapping("/resolved-for-ai")
     public ResponseEntity<List<Incident>> getAllResolvedForAI() {
         List<Incident> resolvedIncidents = incidentService.getAllResolvedWithTeams();
         return ResponseEntity.ok(resolvedIncidents);
